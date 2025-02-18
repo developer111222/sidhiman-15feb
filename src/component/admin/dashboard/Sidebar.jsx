@@ -108,6 +108,29 @@ const handlelogout=()=>{
         </ListItem>
       </NavLink>
 
+      <NavLink
+        to="/admin/all-payment"
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        <ListItem button style={{ paddingLeft: 16, paddingRight: 16 }}>
+          <FaCog style={{ marginRight: "10px" }} />
+          <ListItemText primary="All Payment Info" />
+        </ListItem>
+      </NavLink>
+
+      <NavLink
+        to="/admin/contact-form"
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        <ListItem button style={{ paddingLeft: 16, paddingRight: 16 }}>
+          <FaCog style={{ marginRight: "10px" }} />
+          <ListItemText primary="Contact Form Info" />
+        </ListItem>
+      </NavLink>
+
+  
+    
+
       {/* User Profile Section */}
       <ListItem
         button

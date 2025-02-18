@@ -7,13 +7,17 @@ import { blogReducer } from './reducer/blogReducer';
 import { blogCategoryReducer } from './reducer/blogCategoryReducer';
 import { eventReducer } from './reducer/eventReducer';
 import { paymentReducer } from './reducer/paymentReducer';
+import { contactformReducer } from './reducer/contactformReducer';
+import { galleryReducer } from './reducer/galleryReducer';
 
 const reducer = combineReducers({
   user:userReducer,
   allblogs:blogReducer,
   blogcategory:blogCategoryReducer,
   events:eventReducer,
-  payment:paymentReducer
+  payment:paymentReducer,
+  contactform:contactformReducer,
+  gallery:galleryReducer
     })
     
     let inialState = {

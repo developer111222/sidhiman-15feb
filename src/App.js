@@ -37,6 +37,8 @@ import Event from './component/admin/event/Event.jsx';
 import EventTable from './component/admin/event/get/EventTable.jsx';
 import UpdateEvent from './component/admin/event/update/UpdateEvent.jsx';
 import TestDonation from './component/donation-page/TestDonation.jsx';
+import AllPayment from './component/admin/payment/AllPayment.jsx';
+import ContactFormInfo from './component/admin/contactform/ContactFormInfo.jsx';
 
 
 
@@ -88,6 +90,8 @@ function App() {
           <Route path="/admin/create-events" element={<ProtectedRoute component={Event} requireAdmin={true} />} />
           <Route path="/admin/all-events" element={<ProtectedRoute component={EventTable} requireAdmin={true} />} />
           <Route path="/admin/update-event/:id" element={<ProtectedRoute component={UpdateEvent} requireAdmin={true} />} />
+          <Route path="/admin/all-payment" element={<ProtectedRoute component={AllPayment} requireAdmin={true} />} />
+          <Route path="/admin/contact-form" element={<ProtectedRoute component={ContactFormInfo} requireAdmin={true} />} />
 
 
         </Routes>

@@ -9,6 +9,7 @@ const url=GetSiteUrl();
 
 // Create payment order
 export const createPaymentOrder = (formData) => async (dispatch) => {
+
   try {
     dispatch({ type: CREATE_PAYMENT_REQUEST });
 
@@ -65,7 +66,9 @@ export const getPaymentDetails = () => async (dispatch) => {
   try {
     dispatch({ type: GET_PAYMENT_REQUEST });
 
-    const response = await axios.get(`${url}/api/payments`);
+    const response = await axios.get(`${url}/api/get-payment`,{
+      withCredentials:true
+    });
 
     dispatch({
       type: GET_PAYMENT_SUCCESS,

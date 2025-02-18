@@ -1,6 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import {createForm,ResetClear} from '../../../action/contactformAction'
+import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+
 
 const ContactForm = () => {
+
+const dispatch=useDispatch();
+
+const {error,message}=useSelector(state=>state.contactform)
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,8 +27,24 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // You can replace this with a function to send the data
+   dispatch(createForm(formData))
+    // console.log(formData); // You can replace this with a function to send the data
+
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      question: ''
+    })
   };
+
+  useEffect(()=>{
+    if(error){
+      toast.error(error)
+      dispatch(ResetClear())
+    }
+    toast.success(message)
+  },[error,message])
 
   return (
     <section className="contact-form">

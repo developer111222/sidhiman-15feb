@@ -12,66 +12,58 @@ export const paymentReducer = (state = initialState, action) => {
   switch (action.type) {
     // Create Payment
     case CREATE_PAYMENT_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: null
-      };
-    case CREATE_PAYMENT_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        order: action.payload
-      };
-    case CREATE_PAYMENT_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
-      };
-
-    // Verify Payment  
     case VERIFY_PAYMENT_REQUEST:
-      return {
-        ...state,
-        loading: true,
-        error: null
-      };
-    case VERIFY_PAYMENT_SUCCESS:
-      return {
-        ...state,
-        loading: false,
-        paymentVerification: action.payload
-      };
-    case VERIFY_PAYMENT_FAILURE:
-      return {
-        ...state,
-        loading: false,
-        error: action.payload
-      };
-
-    // Get Payments
     case GET_PAYMENT_REQUEST:
       return {
         ...state,
         loading: true,
         error: null
       };
+
+    case CREATE_PAYMENT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        order: action.payload,
+        message: action.payload.message
+      };
+
+    case VERIFY_PAYMENT_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: true,
+        paymentVerification: action.payload,
+        message: action.payload.message
+      };
+
     case GET_PAYMENT_SUCCESS:
       return {
         ...state,
         loading: false,
-        payments: action.payload
+        success: true,
+        payments: action.payload.payments,
+        message: action.payload.message
       };
+
+    case CREATE_PAYMENT_FAILURE:
+    case VERIFY_PAYMENT_FAILURE:
     case GET_PAYMENT_FAILURE:
       return {
         ...state,
         loading: false,
-        error: action.payload
+        error: action.payload,
+        success: false
       };
 
     case RESET_CLEAR:
-      return initialState;
+      return {
+        ...state,
+        success: false,
+        error: null,
+        message: null
+      };
 
     default:
       return state;
