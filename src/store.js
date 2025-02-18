@@ -6,12 +6,14 @@ import { userReducer } from './reducer/userReducer';
 import { blogReducer } from './reducer/blogReducer';
 import { blogCategoryReducer } from './reducer/blogCategoryReducer';
 import { eventReducer } from './reducer/eventReducer';
+import { paymentReducer } from './reducer/paymentReducer';
 
 const reducer = combineReducers({
   user:userReducer,
   allblogs:blogReducer,
   blogcategory:blogCategoryReducer,
-  events:eventReducer
+  events:eventReducer,
+  payment:paymentReducer
     })
     
     let inialState = {

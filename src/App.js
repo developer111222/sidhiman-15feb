@@ -34,6 +34,9 @@ import BlogCategory from './component/admin/blogcategory/BlogCategory.jsx';
 import UpdateBlog from './component/admin/blog/update/UpdateBlog.jsx';
 import GetBlogTable from './component/admin/blog/getblog/GetBlogTable.jsx';
 import Event from './component/admin/event/Event.jsx';
+import EventTable from './component/admin/event/get/EventTable.jsx';
+import UpdateEvent from './component/admin/event/update/UpdateEvent.jsx';
+import TestDonation from './component/donation-page/TestDonation.jsx';
 
 
 
@@ -67,6 +70,7 @@ function App() {
           <Route path="/social-justice-and-advocacy" element={<SocialJustice />} />
           <Route path="/rural-development" element={<RuralDevelopment />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/try" element={<TestDonation />} />
          
           <Route path="*" element={<PageNotFound />} />
 
@@ -82,6 +86,8 @@ function App() {
           <Route path="/admin/update-blog/:id" element={<ProtectedRoute component={UpdateBlog} requireAdmin={true} />} />
           <Route path="/admin/blog-category" element={<ProtectedRoute component={BlogCategory} requireAdmin={true} />} />
           <Route path="/admin/create-events" element={<ProtectedRoute component={Event} requireAdmin={true} />} />
+          <Route path="/admin/all-events" element={<ProtectedRoute component={EventTable} requireAdmin={true} />} />
+          <Route path="/admin/update-event/:id" element={<ProtectedRoute component={UpdateEvent} requireAdmin={true} />} />
 
 
         </Routes>

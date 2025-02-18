@@ -43,6 +43,16 @@ const CreateBlog = () => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
     dispatch(createblog(formData))
+   setFormData({
+    metatitle: "",
+    metadescription: "",
+    metakeywords: "",
+    title: "",
+    content: "",
+
+    image: "",
+    category: ""
+   })
   };
 
 useEffect(()=>{

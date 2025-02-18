@@ -98,6 +98,15 @@ const handlelogout=()=>{
           <ListItemText primary="Create Events" />
         </ListItem>
       </NavLink>
+      <NavLink
+        to="/admin/all-events"
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        <ListItem button style={{ paddingLeft: 16, paddingRight: 16 }}>
+          <FaCog style={{ marginRight: "10px" }} />
+          <ListItemText primary="All Events" />
+        </ListItem>
+      </NavLink>
 
       {/* User Profile Section */}
       <ListItem

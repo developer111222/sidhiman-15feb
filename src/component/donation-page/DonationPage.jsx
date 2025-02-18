@@ -1,6 +1,15 @@
 import React, { useState } from 'react';
 
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { createPaymentOrder, verifyPayment } from '../../action/paymentAction';
+import { useDispatch,useSelector } from 'react-redux';
+
 function DonationPage() {
+
+  // const { error, isLoading, Razorpay } = useRazorpay();
+const dispatch=useDispatch()
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -18,11 +27,115 @@ function DonationPage() {
     });
   };
 
-  const handleSubmit = (e) => {
+//   const handleSubmit = async (e) => {
+// e.preventDefault()
+
+//     if (!formData.amount || formData.amount <= 0) {
+//       alert("Please enter a valid amount");
+//       return;
+//     }
+
+//     try {
+//       // Step 1: Create order from backend
+//       const response = await axios.post("http://localhost:5000/api/create-order", formData);
+//       const { order } = response.data;
+// console.log(order,"order -data")
+//       // Step 2: Open Razorpay Payment Window
+//       const options = {
+//         key: "rzp_test_qEmBTt5Ssq87mn", // Replace with your Razorpay Key
+//         amount: order.amount,
+//         currency: "INR",
+//         name: "Test Company",
+//         description: "Donation Payment",
+//         order_id: order.id,
+//         handler: async function (response) {
+//           // Step 3: Verify payment
+//           const verifyResponse = await axios.post("http://localhost:5000/api/verify-payment", {
+//             orderId: order.id,
+//             paymentId: response.razorpay_payment_id,
+//             signature: response.razorpay_signature,
+//           });
+
+//           if (verifyResponse.data.success) {
+//             alert("Payment Successful!");
+//           } else {
+//             alert("Payment Verification Failed!");
+//           }
+//         },
+//         prefill: {
+//           name: formData.name,
+//           email: formData.email,
+//           contact: formData.phone,
+//         },
+//         theme: { color: "#3399cc" },
+//       };
+
+//       const razorpayInstance = new window.Razorpay(options);
+//       razorpayInstance.open();
+//     } catch (error) {
+//       console.error(error);
+//       alert("Error in payment processing!");
+//     }
+//   };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData)
-    // Handle form submission and Razorpay logic here...
-    alert("Donation Submitted");
+
+    if (!formData.amount || formData.amount <= 0) {
+      alert("Please enter a valid amount");
+      return;
+    }
+
+    try {
+      // Step 1: Create order using Redux action
+      const order = await dispatch(createPaymentOrder(formData));
+
+      // Step 2: Open Razorpay Payment Window
+      const options = {
+        key: "rzp_test_qEmBTt5Ssq87mn", // Replace with your Razorpay Key
+        amount: order.amount,
+        currency: "INR", 
+        name: "Test Company",
+        description: "Donation Payment",
+        order_id: order.id,
+        handler: async function(response) {
+          // Step 3: Verify payment using Redux action
+          const verifyResponse = await dispatch(verifyPayment({
+            orderId: order.id,
+            paymentId: response.razorpay_payment_id,
+            signature: response.razorpay_signature
+          }));
+
+          if (verifyResponse.success) {
+            toast.success("Payment Successful!");
+            setFormData({
+              name: "",
+              email: "",
+              phone: "",
+              city: "",
+              state: "",
+              amount: "",
+            })
+            window.location.href = "/";
+          } else {
+            toast.error("Payment Verification Failed!");
+          }
+        },
+        prefill: {
+          name: formData.name,
+          email: formData.email,
+          contact: formData.phone
+        },
+        theme: { color: "#3399cc" }
+      };
+
+      const razorpayInstance = new window.Razorpay(options);
+      razorpayInstance.open();
+
+    } catch (error) {
+      console.error(error);
+      toast.error("Error in payment processing!");
+    }
   };
 
   return (
@@ -57,6 +170,7 @@ function DonationPage() {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
+                  required
                 />
                 <label>Complete Name</label>
                 <input
@@ -64,6 +178,7 @@ function DonationPage() {
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
+                  required
                 />
                 <label>City</label>
                 <input
@@ -71,6 +186,7 @@ function DonationPage() {
                   name="city"
                   value={formData.city}
                   onChange={handleInputChange}
+                  required
                 />
                 <label>State</label>
                 <div className="d-flex">
@@ -121,8 +237,11 @@ function DonationPage() {
                   />
 
                 </div>
+                {/* {isLoading && <p>Loading Razorpay...</p>}
+                {error && <p>Error loading Razorpay: {error}</p>} */}
+                <input type="submit" className="give-submit" value="Donate Now"   />
 
-                <input type="submit" className="give-submit" value="Donate Now" />
+           
               </div>
             </div>
           </form>
