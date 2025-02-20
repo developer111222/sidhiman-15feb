@@ -20,12 +20,13 @@ export const galleryReducer = (state = { galleries: [] }, action) => {
         loading: false,
         success: true,
         gallery: action.payload,
+        message:action.payload.message
       };
 
     case GET_GALLERY_SUCCESS:
       return {
         loading: false,
-        galleries: action.payload.galleries,
+        galleries: action.payload.data,
       };
 
     case GET_SINGLE_GALLERY_SUCCESS:
@@ -37,8 +38,9 @@ export const galleryReducer = (state = { galleries: [] }, action) => {
     case UPDATE_GALLERY_SUCCESS:
       return {
         loading: false,
-        success: true,
+        isupdate: true,
         gallery: action.payload,
+        message: action.payload.message,  
       };
 
     case DELETE_GALLERY_SUCCESS:
@@ -63,6 +65,9 @@ export const galleryReducer = (state = { galleries: [] }, action) => {
         ...state,
         success: false,
         error: null,
+        message:null,
+        isupdate:null
+
       };
 
     default:

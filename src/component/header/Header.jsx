@@ -114,7 +114,7 @@ const Header = () => {
                 <div className="col-lg-3">
                   <div className="logo">
                     <NavLink to="/">
-                      <img alt="logo" src="assets/img/logo.png" className="white-logo" />
+                      <img alt="logo" src="/logo.png" className="white-logo" />
                       {/* <img alt="logo" src="assets/img/logo-w.png" className="black-logo" /> */}
                     </NavLink>
                   </div>
@@ -177,7 +177,12 @@ const Header = () => {
                         </ul>
 
                         </li>
+
                         <li>
+                            <NavLink to="/blog">Blog</NavLink>
+                          </li>
+                        <li>
+                        
                           <NavLink to="/contact">Contact</NavLink>
                         </li>
                       </ul>
@@ -324,6 +329,9 @@ const Header = () => {
                 </li>
               </ul>
             </li> */}
+              <li>
+              <NavLink to="/blog">Blog</NavLink>
+            </li>
           
             <li>
               <NavLink to="/contact">Contact</NavLink>

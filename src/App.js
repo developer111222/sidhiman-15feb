@@ -39,6 +39,12 @@ import UpdateEvent from './component/admin/event/update/UpdateEvent.jsx';
 import TestDonation from './component/donation-page/TestDonation.jsx';
 import AllPayment from './component/admin/payment/AllPayment.jsx';
 import ContactFormInfo from './component/admin/contactform/ContactFormInfo.jsx';
+import AllBlog from './component/blog/AllBlog.jsx';
+import HeadLinks from './component/headlink/HeadLinks.jsx';
+import BlogByCategory from './component/blog/blogbycategory/BlogByCategory.jsx';
+import GalleryCategory from './component/admin/gallerycategory/GalleryCategory.jsx';
+import GalleryCategoryUpdate from './component/admin/gallerycategory/update/GalleryCategoryUpdate.jsx';
+import CreateGallery from './component/admin/gallery/CreateGallery.jsx';
 
 
 
@@ -51,6 +57,7 @@ function App() {
 
   return (
     <div className="App">
+      <HeadLinks/>
       <Router>
 <ScrollToTop/>
       
@@ -64,7 +71,9 @@ function App() {
           <Route path="/event-details" element={<EventDetails />} />
           <Route path="/donation" element={<DonationPage />} />
           <Route path="/gallery" element={<PhotoGallery />} />
-          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog" element={<AllBlog />} />
+          <Route path="/blog/:id" element={<BlogPage />} />
+          <Route path="/blog/category/:id" element={<BlogByCategory />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/why-education" element={<Education />} />
           <Route path="/healthcare" element={<HealthCare />} />
@@ -92,6 +101,9 @@ function App() {
           <Route path="/admin/update-event/:id" element={<ProtectedRoute component={UpdateEvent} requireAdmin={true} />} />
           <Route path="/admin/all-payment" element={<ProtectedRoute component={AllPayment} requireAdmin={true} />} />
           <Route path="/admin/contact-form" element={<ProtectedRoute component={ContactFormInfo} requireAdmin={true} />} />
+          <Route path="/admin/create/gallery" element={<ProtectedRoute component={CreateGallery} requireAdmin={true} />} />
+          <Route path="/admin/create-gallery" element={<ProtectedRoute component={GalleryCategory} requireAdmin={true} />} />
+          <Route path="/admin/update-gallery/:id" element={<ProtectedRoute component={GalleryCategoryUpdate} requireAdmin={true} />} />
 
 
         </Routes>

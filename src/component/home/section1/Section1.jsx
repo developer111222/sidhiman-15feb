@@ -1,36 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import './Section1.css'; // Assuming you have a separate CSS file for styling
-
+import './Section1.css'; // CSS file for styling
 
 const slidesData = [
   {
     title: 'Home is Life',
     description: 'We build strength, stability, and self-reliance through shelter.',
-    imageUrl: '/assets/img/hero-1.jpg',
+    imageUrlDesktop: '/assets/img/hero-1.jpg',
+    imageUrlMobile: '/assets/img/mob.jpg', // Mobile-specific image
     link: '/donation',
   },
   {
     title: 'Help for Orphans',
     description: 'One of the biggest risk factors involved in family separation.',
-    imageUrl: '/assets/img/hero-2.jpg',
+    imageUrlDesktop: '/assets/img/hero-2.jpg',
+    imageUrlMobile: '/assets/img/mob2.jpg', // Mobile-specific image
     link: '/donation',
   },
   {
     title: 'Sponsor an Orphan',
     description: 'One of the biggest risk factors involved in family separation.',
-    imageUrl: '/assets/img/hero-3.jpg',
+    imageUrlDesktop: '/assets/img/hero-3.jpg',
+    imageUrlMobile: '/assets/img/mob3.jpg', // Mobile-specific image
     link: '/donation',
   },
   {
     title: 'Educational Needs',
     description: 'The woman approaches the camera till we see a close up of her face.',
-    imageUrl: 'assets/img/dummy4.jpg',
+    imageUrlDesktop: '/assets/img/dummy4.jpg',
+    imageUrlMobile: '/assets/img/mob4.jpg', // Mobile-specific image
     link: '/donation',
   },
 ];
 
 const Section1 = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  // Handle window resize to update image based on screen width
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlideIndex((prevIndex) => (prevIndex + 1) % slidesData.length);
@@ -47,9 +61,14 @@ const Section1 = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000); // Automatically change slide every 5 seconds
+    const interval = setInterval(nextSlide, 5000); // Auto-slide every 5 seconds
     return () => clearInterval(interval);
   }, []);
+
+  // Determine which image URL to use based on screen size
+  const currentImageUrl = isMobile
+    ? slidesData[currentSlideIndex].imageUrlMobile
+    : slidesData[currentSlideIndex].imageUrlDesktop;
 
   return (
     <section className="slider-one">
@@ -57,7 +76,7 @@ const Section1 = () => {
         <div
           className="slides item"
           style={{
-            backgroundImage: `url(${slidesData[currentSlideIndex].imageUrl})`,
+            backgroundImage: `url(${currentImageUrl})`,
           }}
         >
           <div className="container">

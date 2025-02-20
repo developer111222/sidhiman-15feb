@@ -1,35 +1,4 @@
-/*-----------------------------------------------------------------------------------
 
-    Template Name: Orphan -  Charity HTML Template
-
-
-    Note: This is Custom Js file
-
------------------------------------------------------------------------------------
-
-    [Table of contents]
-    
-    1. slider-home-1
-    2. slider-home-2
-    3. logodata  
-    4. gifts slids
-    5. child-sponsor-slide
-    6. see-impact-slids
-    7. mobile-nav
-    8. slider-for
-    9. slider-for-two
-    10. zoom-slider
-    11. project-today
-    12. accordion-item
-    13. progressbar
-    14. pd-gallery
-    15. Cart Popup Start
-    16. Donation Amount Select On Click Start
-    17. Preloader
-    18. back to top button
-
------------------------------------------------------------------------------------*/
-/* 1. slider-home-1 */ 
 jQuery(document).ready(function($){
 if ( $.isFunction($.fn.owlCarousel) ) {
 $('.slider-home-1').owlCarousel({
@@ -408,31 +377,32 @@ btn.on('click', function(e) {
 });
 
 
-// theme-icon/moon
-let lightmode = localStorage.getItem('drak-mode');
-    const lightmodeToggle = document.querySelector('#theme-icon');
-    const enableLightMode = () => {
-        document.body.classList.add('drak-mode');
-        localStorage.setItem('drak-mode', 'enabled');
-        lightmodeToggle.src = 'assets/img/moon.png';
-    }
-    
-    const disablelightmode = () => {
-        document.body.classList.remove('drak-mode');
-        localStorage.setItem('drak-mode', null);
-        lightmodeToggle.src = 'assets/img/sun.png';
-    }
+// // Remove 'let' from the second declaration, so it updates the existing variable
+// let lightmode = localStorage.getItem('drak-mode'); 
+// const lightmodeToggle = document.querySelector('#theme-icon');
 
-    if (lightmode === 'enabled') {
-        enableLightMode();
-    }
+// const enableLightMode = () => {
+//     document.body.classList.add('drak-mode');
+//     localStorage.setItem('drak-mode', 'enabled');
+//     lightmodeToggle.src = 'assets/img/moon.png';
+// };
 
-    lightmodeToggle.addEventListener('click', () => {
-        lightmode = localStorage.getItem('drak-mode'); 
+// const disableLightMode = () => {
+//     document.body.classList.remove('drak-mode');
+//     localStorage.setItem('drak-mode', 'disabled'); // Use 'disabled' instead of null
+//     lightmodeToggle.src = 'assets/img/sun.png';
+// };
 
-        if (lightmode !== 'enabled') {
-            enableLightMode();
-        } else {  
-            disablelightmode();
-        }
-    });
+// if (lightmode === 'enabled') {
+//     enableLightMode();
+// }
+
+// lightmodeToggle.addEventListener('click', () => {
+//     lightmode = localStorage.getItem('drak-mode'); // No 'let' keyword here
+
+//     if (lightmode !== 'enabled') {
+//         enableLightMode();
+//     } else {  
+//         disableLightMode();
+//     }
+// });

@@ -1,5 +1,5 @@
 import {
-    CREATE_BLOG_REQUEST,CREATE_BLOG_SUCCESS,CREATE_BLOG_FAILURE,GETBLOG_REQUEST,GETBLOG_SUCCESS,GETBLOG_FAILURE,GET_SINGLE_BLOG_REQUEST,GET_SINGLE_BLOG_SUCCESS,GET_SINGLE_BLOG_FAILURE,UPDATE_BLOG_REQUEST,UPDATE_BLOG_SUCCESS,UPDATE_BLOG_FAIL,DELETE_BLOG_REQUEST,DELETE_BLOG_SUCCESS,DELETE_BLOG_FAIL,RESET_CLEAR
+    CREATE_BLOG_REQUEST,CREATE_BLOG_SUCCESS,CREATE_BLOG_FAILURE,GETBLOG_REQUEST,GETBLOG_SUCCESS,GETBLOG_FAILURE,GET_SINGLE_BLOG_REQUEST,GET_SINGLE_BLOG_SUCCESS,GET_SINGLE_BLOG_FAILURE,UPDATE_BLOG_REQUEST,UPDATE_BLOG_SUCCESS,UPDATE_BLOG_FAIL,DELETE_BLOG_REQUEST,DELETE_BLOG_SUCCESS,DELETE_BLOG_FAIL,RESET_CLEAR,GET_BLOG_BY_CATEGORY_REQUEST,GET_BLOG_BY_CATEGORY_SUCCESS,GET_BLOG_BY_CATEGORY_FAILURE
 } from '../constant/blogConstant';
 import GetSiteUrl from '../utils/GetSiteUrl';
 import axios from 'axios';
@@ -85,6 +85,33 @@ export const getsingleblog = (id) => async (dispatch) => {
         });
     }
 }
+
+//------------------GET BLOG BY CXATEGORY------------------------------
+
+export const getblogbycategory = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: GET_BLOG_BY_CATEGORY_REQUEST });
+
+        const { data } = await axios.get(`${url}/api/blog-by-category/${id}`, {
+          
+        });
+
+        dispatch({ type: GET_BLOG_BY_CATEGORY_SUCCESS, payload: data });
+
+    } catch (error) {
+        dispatch({
+            type: GET_BLOG_BY_CATEGORY_FAILURE,
+            payload: error.response && error.response.data.message
+                ? error.response.data.message
+                : error.message
+        });
+    }
+}
+
+
+
+
+
 
 //-----------------------------------UPDATE BLOG-----------------------
 export const updateblog = (id, formData) => async (dispatch) => {

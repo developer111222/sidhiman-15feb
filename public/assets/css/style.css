@@ -406,10 +406,12 @@ a.pr-cart {
 .home-life h1{
     font-size: 75px;
     font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 .home-life h4 {
     width: 68%;
-    margin: auto;
+    /* margin: auto; */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     line-height: 38px;
     padding-bottom: 50px;
     font-weight: 400;
@@ -3849,7 +3851,7 @@ body.drak-mode .enter-your-information input.give-submit:hover{
     border-radius: 40px;
 }
 .blog-details-text .article h4 {
-    width: 14%;
+    width: 37%;
     margin-left: 40px;
     transform: translateY(-50px);
     margin-bottom: -20px;

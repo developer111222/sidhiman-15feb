@@ -109,6 +109,26 @@ const handlelogout=()=>{
       </NavLink>
 
       <NavLink
+        to="/admin/create/gallery"
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        <ListItem button style={{ paddingLeft: 16, paddingRight: 16 }}>
+          <FaCog style={{ marginRight: "10px" }} />
+          <ListItemText primary="Gallery" />
+        </ListItem>
+      </NavLink>
+
+      <NavLink
+        to="/admin/create-gallery"
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        <ListItem button style={{ paddingLeft: 16, paddingRight: 16 }}>
+          <FaCog style={{ marginRight: "10px" }} />
+          <ListItemText primary="Create Gallery Category" />
+        </ListItem>
+      </NavLink>
+
+      <NavLink
         to="/admin/all-payment"
         style={{ textDecoration: "none", color: "inherit" }}
       >

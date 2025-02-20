@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="footer-logo-one" >
               <div style={{background:'white', width:'330px',padding:'20px',borderRadius:'30px'}}>
               <a href="/" >
-                <img alt="logo" src="assets/img/logo.png"  style={{width:'300px', borderRadius:'30px'}} />
+                <img alt="logo" src="/logo.png"  style={{width:'300px', borderRadius:'30px'}} />
               </a>
               </div>
             </div>

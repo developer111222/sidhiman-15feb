@@ -9,6 +9,7 @@ import { eventReducer } from './reducer/eventReducer';
 import { paymentReducer } from './reducer/paymentReducer';
 import { contactformReducer } from './reducer/contactformReducer';
 import { galleryReducer } from './reducer/galleryReducer';
+import { galleryCategoryReducer } from './reducer/galleryCategoryReducer';
 
 const reducer = combineReducers({
   user:userReducer,
@@ -17,7 +18,8 @@ const reducer = combineReducers({
   events:eventReducer,
   payment:paymentReducer,
   contactform:contactformReducer,
-  gallery:galleryReducer
+  gallery:galleryReducer,
+  gallerycategory:galleryCategoryReducer, 
     })
     
     let inialState = {

@@ -1,5 +1,5 @@
 import {
-    CREATE_BLOG_REQUEST,CREATE_BLOG_SUCCESS,CREATE_BLOG_FAILURE,GETBLOG_REQUEST,GETBLOG_SUCCESS,GETBLOG_FAILURE,GET_SINGLE_BLOG_REQUEST,GET_SINGLE_BLOG_SUCCESS,GET_SINGLE_BLOG_FAILURE,UPDATE_BLOG_REQUEST,UPDATE_BLOG_SUCCESS,UPDATE_BLOG_FAIL,DELETE_BLOG_REQUEST,DELETE_BLOG_SUCCESS,DELETE_BLOG_FAIL,RESET_CLEAR
+    CREATE_BLOG_REQUEST,CREATE_BLOG_SUCCESS,CREATE_BLOG_FAILURE,GETBLOG_REQUEST,GETBLOG_SUCCESS,GETBLOG_FAILURE,GET_SINGLE_BLOG_REQUEST,GET_SINGLE_BLOG_SUCCESS,GET_SINGLE_BLOG_FAILURE,UPDATE_BLOG_REQUEST,UPDATE_BLOG_SUCCESS,UPDATE_BLOG_FAIL,DELETE_BLOG_REQUEST,DELETE_BLOG_SUCCESS,DELETE_BLOG_FAIL,RESET_CLEAR,GET_BLOG_BY_CATEGORY_REQUEST,GET_BLOG_BY_CATEGORY_SUCCESS,GET_BLOG_BY_CATEGORY_FAILURE
 } from '../constant/blogConstant';
 
 
@@ -20,7 +20,8 @@ export const blogReducer = (state = initialstate, action) => {
         case GET_SINGLE_BLOG_REQUEST:
         case UPDATE_BLOG_REQUEST:
         case DELETE_BLOG_REQUEST:
-            return {
+            case GET_BLOG_BY_CATEGORY_REQUEST:
+                       return {
                 ...state,
                 loading: true
             };
@@ -49,6 +50,13 @@ export const blogReducer = (state = initialstate, action) => {
              isblog:true,
                 message: action.payload.message
             };
+            case GET_BLOG_BY_CATEGORY_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                categoryblogs: action.payload.blogs,
+                message: action.payload.message
+            };
 
         case UPDATE_BLOG_SUCCESS:
             return {
@@ -71,6 +79,7 @@ export const blogReducer = (state = initialstate, action) => {
         case GET_SINGLE_BLOG_FAILURE:
         case UPDATE_BLOG_FAIL:
         case DELETE_BLOG_FAIL:
+            case GET_BLOG_BY_CATEGORY_FAILURE:
             return {
                 ...state,
                 loading: false,
