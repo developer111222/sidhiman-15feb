@@ -1,32 +1,51 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { getsingleblog } from "../../../action/blogAction";
+import { getsingleblog, ResetClear } from "../../../action/blogAction";
 import { toast } from "react-toastify";
 import Comment from '../comment/Comment';
 import RecentPosts from '../recent-posts/RecentPosts';
 import Category from '../category/Category';
 import DOMPurify from 'dompurify';
+import ImageUrl from '../../../utils/ImageUrl';
+import {Helmet} from 'react-helmet-async'
 
 const BlogPage = () => {
     const { id } = useParams();  // ✅ Get the blog ID from URL
     const dispatch = useDispatch();
     const { loading, blog, error } = useSelector((state) => state.allblogs);
 
-    const imageurl = 'http://localhost:5000/upload';
+    const imageurl = ImageUrl();
 
     useEffect(() => {
         if (error) {
             toast.error(error);
+            dispatch(ResetClear())
         }
         if (id) {
             dispatch(getsingleblog(id));
+            dispatch(ResetClear())
         }
+        dispatch(ResetClear())
     }, [dispatch, error, id]);
+    useEffect(() => {
+        console.log("Helmet Debug:", blog?.title, blog?.metakeywords, blog?.metadescription);
+    }, [blog]);
+    
+
 
     return (
         <>
-            {/* Page Title Section */}
+        {/* Add Meta Tags in the Head */}
+        {blog && (
+  <Helmet>
+    <title>{blog && blog.metatitle}</title>
+    <meta name="author" content={blog && blog.author && blog.author.username} />
+    <meta name="keywords" content={blog && blog.metakeywords || ''} />
+    <meta name="description" content={blog && blog.metadescription || ''} />
+  </Helmet>
+)}
+
             <section className="page-title-area" style={{ backgroundImage: 'url(https://via.placeholder.com/1920x430)' }}>
                 <div className="container">
                     <div className="title-area-data">
@@ -70,8 +89,8 @@ const BlogPage = () => {
                                         <div className="meta-info">
                                             <ul>
                                                 <li className=""  >
-                                                   
-                                                    <p style={{background:'red',color:'white',paddingLeft:'8px'}}>Posted by {blog.author?.username || "Unknown"}</p>
+
+                                                    <p style={{ background: 'red', color: 'white', paddingLeft: '8px' }}>Posted by {blog.author?.username || "Unknown"}</p>
                                                 </li>
                                                 <li><i className="fa-solid fa-eye"></i><h6>50K</h6></li>
                                                 <li><i className="fa-solid fa-message"></i><h6>50K</h6></li>
@@ -79,7 +98,7 @@ const BlogPage = () => {
                                         </div>
 
                                         {/* Blog Content */}
-                                   <p className="pt-4" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blog.content) }}></p>
+                                        <p className="pt-4" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blog.content) }}></p>
 
                                         {/* Post Tags */}
                                         {/* <div className="post-tags">

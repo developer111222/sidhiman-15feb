@@ -50,8 +50,8 @@ const Header = () => {
                       </svg>
                     </i>
                     <span>Phone:</span>
-                    <a className="me-3" href="callto:800-836-4620">
-                      800-836-4620
+                    <a className="me-3" href="callto:+917719000078">
+                    +91 7719000078
                     </a>
                   </div>
                   <div className="phone">
@@ -73,7 +73,7 @@ const Header = () => {
                       </svg>
                     </i>
                     <span>Email:</span>
-                    <a href="mailto:information@domain.com">information@domain.com</a>
+                    <a href="mailto:sidhimanfoundation@gmail.com">sidhimanfoundation@gmail.com</a>
                   </div>
                 </div>
               </div>
@@ -177,6 +177,9 @@ const Header = () => {
                         </ul>
 
                         </li>
+                        <li>
+                            <NavLink to="/gallery">Gallery</NavLink>
+                          </li>
 
                         <li>
                             <NavLink to="/blog">Blog</NavLink>
@@ -329,6 +332,11 @@ const Header = () => {
                 </li>
               </ul>
             </li> */}
+
+<li>
+                            <NavLink to="/gallery">Gallery</NavLink>
+                          </li>
+
               <li>
               <NavLink to="/blog">Blog</NavLink>
             </li>

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import RecentPosts from "../recent-posts/RecentPosts";
 import Category from "../category/Category";
 import { NavLink, useParams } from "react-router-dom";
+import ImageUrl from "../../../utils/ImageUrl";
 
 const BlogByCategory = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const BlogByCategory = () => {
   const { loading, categoryblogs, error } = useSelector((state) => state.allblogs);
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 9;
-  const imageurl = "http://localhost:5000/upload";
+  const imageurl = ImageUrl();
 
   useEffect(() => {
     if (error) {

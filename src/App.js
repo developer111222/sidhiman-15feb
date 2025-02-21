@@ -45,6 +45,8 @@ import BlogByCategory from './component/blog/blogbycategory/BlogByCategory.jsx';
 import GalleryCategory from './component/admin/gallerycategory/GalleryCategory.jsx';
 import GalleryCategoryUpdate from './component/admin/gallerycategory/update/GalleryCategoryUpdate.jsx';
 import CreateGallery from './component/admin/gallery/CreateGallery.jsx';
+import UpdateGallery from './component/admin/gallery/update/UpdateGallery.jsx';
+import Events from './component/event-details/Events.jsx';
 
 
 
@@ -68,7 +70,8 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/cause-details" element={<CauseDetails />} />
           <Route path="/team-details" element={<TeamDetails />} />
-          <Route path="/event-details" element={<EventDetails />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/events/:id" element={<EventDetails />} />
           <Route path="/donation" element={<DonationPage />} />
           <Route path="/gallery" element={<PhotoGallery />} />
           <Route path="/blog" element={<AllBlog />} />
@@ -102,6 +105,8 @@ function App() {
           <Route path="/admin/all-payment" element={<ProtectedRoute component={AllPayment} requireAdmin={true} />} />
           <Route path="/admin/contact-form" element={<ProtectedRoute component={ContactFormInfo} requireAdmin={true} />} />
           <Route path="/admin/create/gallery" element={<ProtectedRoute component={CreateGallery} requireAdmin={true} />} />
+          <Route path="/admin/update/gallery/:id" element={<ProtectedRoute component={UpdateGallery} requireAdmin={true} />} />
+
           <Route path="/admin/create-gallery" element={<ProtectedRoute component={GalleryCategory} requireAdmin={true} />} />
           <Route path="/admin/update-gallery/:id" element={<ProtectedRoute component={GalleryCategoryUpdate} requireAdmin={true} />} />
 

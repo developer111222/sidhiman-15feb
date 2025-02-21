@@ -11,6 +11,8 @@ const GalleryForm = ({handleSubmit,handleChange,formData,galleryCategories}) => 
       <input
         type="file"
         name="image"
+        multiple // Allow multiple file selection
+
         onChange={handleChange}
         style={{
           width: '80%',
@@ -19,8 +21,9 @@ const GalleryForm = ({handleSubmit,handleChange,formData,galleryCategories}) => 
           border: '1px solid #ccc',
           borderRadius: '4px',
         }}
-        required
+    
       />
+  <p>Selected Images: {formData.images && formData.images.map((file) => file.name).join(', ')}</p>
     </div>
 
     {/* Category Dropdown */}
@@ -39,7 +42,7 @@ const GalleryForm = ({handleSubmit,handleChange,formData,galleryCategories}) => 
           border: '1px solid #ccc',
           borderRadius: '4px',
         }}
-        required
+        
       >
         <option value="">Choose a category</option>
         {galleryCategories && galleryCategories.length > 0 ? (
@@ -52,6 +55,7 @@ const GalleryForm = ({handleSubmit,handleChange,formData,galleryCategories}) => 
           <option disabled>No categories found</option>
         )}
       </select>
+      <p>Category Name: {formData.category}</p>
     </div>
 
     {/* Submit Button */}

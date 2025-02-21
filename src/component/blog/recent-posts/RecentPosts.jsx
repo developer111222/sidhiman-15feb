@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { getallblog } from "../../../action/blogAction";
 import { toast } from "react-toastify";
 import { NavLink } from 'react-router-dom';
+import ImageUrl from '../../../utils/ImageUrl';
 
 const RecentPosts = () => {
     const dispatch = useDispatch();
     const { loading, blogs, error } = useSelector((state) => state.allblogs);
 
-    const imageurl = 'http://localhost:5000/upload';
+    const imageurl = ImageUrl();
 
     useEffect(() => {
         if (error) {

@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import RecentPosts from "./recent-posts/RecentPosts";
 import Category from "./category/Category";
 import { NavLink } from "react-router-dom";
+import ImageUrl from "../../utils/ImageUrl";
 
 const AllBlog = () => {
     const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const AllBlog = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const blogsPerPage = 9;
 
-    const imageurl = 'http://localhost:5000/upload'
+    const imageurl = ImageUrl();
 
     useEffect(() => {
         if (error) {
@@ -82,12 +83,12 @@ const AllBlog = () => {
                                                             📅 {new Date(blog.createdAt).toLocaleDateString()}
                                                         </p>
                                                         <NavLink
-    to={`/blog/${blog.slug}`}
-    className="text-danger small fw-bold"
-    style={{ textDecoration: "none" }}
->
-    Read More →
-</NavLink>
+                                                            to={`/blog/${blog.slug}`}
+                                                            className="text-danger small fw-bold"
+                                                            style={{ textDecoration: "none" }}
+                                                        >
+                                                            Read More →
+                                                        </NavLink>
                                                     </div>
                                                 </div>
                                             </div>

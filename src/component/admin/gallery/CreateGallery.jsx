@@ -16,7 +16,7 @@ const CreateGallery = () => {
 
   // Single useState for form data
   const [formData, setFormData] = useState({
-    image: null,
+    image: [],
     category: '',
   });
 
@@ -33,16 +33,17 @@ const CreateGallery = () => {
     }
   }, [dispatch, error, success, message]);
 
-  // Single handleChange function for both file input & category selection
   const handleChange = (event) => {
     const { name, type, value, files } = event.target;
-
+  
     setFormData((prevData) => ({
       ...prevData,
-      [name]: type === 'file' ? files[0] : value, // If input is file, store the first file, otherwise store value
+      [name]: type === 'file' ? (files ? Array.from(files) : []) : value, 
     }));
   };
-
+  
+  
+  
   // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();

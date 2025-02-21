@@ -4,6 +4,9 @@ import { toast } from "react-toastify";
 import { getGalleries,deleteGallery, ResetClear } from "../../../../action/galleryAction";
 import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import ImageUrl from "../../../../utils/ImageUrl";
+
+
 
 const GalleryData = () => {
 
@@ -18,7 +21,7 @@ const GalleryData = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [categoriesPerPage] = useState(10);
 
-  const imageurl = 'http://localhost:5000/upload';
+  const imageurl = ImageUrl();
 
   useEffect(() => {
     if (error) {
@@ -37,8 +40,9 @@ const GalleryData = () => {
   };
 
   const handleEdit=(id)=>{
-    // navigate(`/admin/update-gallery/${id}`);
+    navigate(`/admin/update/gallery/${id}`);
     // window.location.reload();
+    dispatch(ResetClear())
   }
 
   // Handle search input change
@@ -114,9 +118,25 @@ const GalleryData = () => {
                   {index + 1}
                 </td>
                 <td style={{ padding: "10px", border: "1px solid #ddd" }}>
-                    <img src={`${imageurl}/${category.image}`}  style={{width:'100px'}} />
-                  {/* {`imageurl`/.category.image} */}
-                </td>
+  {Array.isArray(category.image) ? (
+    category.image.map((img, index) => (
+      <img 
+        key={index} 
+        src={`${imageurl}/${img}`}  
+        alt={`Gallery ${index}`} 
+        style={{ width: '100px', marginRight: '5px' }} 
+      />
+    ))
+  ) : (
+    <img 
+      src={`${imageurl}/${category.image}`}  
+      alt="Gallery" 
+      style={{ width: '100px' }} 
+    />
+  )}
+</td>
+
+
                 <td style={{ padding: "10px", border: "1px solid #ddd" }}>
                 {category.category?.category || "No Category"}
                 </td>
