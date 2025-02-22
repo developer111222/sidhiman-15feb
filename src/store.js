@@ -6,7 +6,7 @@ import { userReducer } from './reducer/userReducer';
 import { blogReducer } from './reducer/blogReducer';
 import { blogCategoryReducer } from './reducer/blogCategoryReducer';
 import { eventReducer } from './reducer/eventReducer';
-import { paymentReducer } from './reducer/paymentReducer';
+
 import { contactformReducer } from './reducer/contactformReducer';
 import { galleryReducer } from './reducer/galleryReducer';
 import { galleryCategoryReducer } from './reducer/galleryCategoryReducer';
@@ -16,7 +16,7 @@ const reducer = combineReducers({
   allblogs:blogReducer,
   blogcategory:blogCategoryReducer,
   events:eventReducer,
-  payment:paymentReducer,
+
   contactform:contactformReducer,
   gallery:galleryReducer,
   gallerycategory:galleryCategoryReducer, 
