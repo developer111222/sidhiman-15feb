@@ -92,7 +92,7 @@ const dispatch=useDispatch()
 
       // Step 2: Open Razorpay Payment Window
       const options = {
-        key: "rzp_test_qEmBTt5Ssq87mn", // Replace with your Razorpay Key
+        key: "", // Replace with your Razorpay Key
         amount: order.amount,
         currency: "INR", 
         name: "Test Company",

@@ -36,7 +36,7 @@ import GetBlogTable from './component/admin/blog/getblog/GetBlogTable.jsx';
 import Event from './component/admin/event/Event.jsx';
 import EventTable from './component/admin/event/get/EventTable.jsx';
 import UpdateEvent from './component/admin/event/update/UpdateEvent.jsx';
-import TestDonation from './component/donation-page/TestDonation.jsx';
+
 import AllPayment from './component/admin/payment/AllPayment.jsx';
 import ContactFormInfo from './component/admin/contactform/ContactFormInfo.jsx';
 import AllBlog from './component/blog/AllBlog.jsx';
@@ -72,7 +72,7 @@ function App() {
           <Route path="/team-details" element={<TeamDetails />} />
           <Route path="/events" element={<Events />} />
           <Route path="/events/:id" element={<EventDetails />} />
-          <Route path="/donation" element={<DonationPage />} />
+          {/* <Route path="/donation" element={<DonationPage />} /> */}
           <Route path="/gallery" element={<PhotoGallery />} />
           <Route path="/blog" element={<AllBlog />} />
           <Route path="/blog/:id" element={<BlogPage />} />
@@ -84,7 +84,7 @@ function App() {
           <Route path="/social-justice-and-advocacy" element={<SocialJustice />} />
           <Route path="/rural-development" element={<RuralDevelopment />} />
           <Route path="/login" element={<LoginForm />} />
-          <Route path="/try" element={<TestDonation />} />
+        
          
           <Route path="*" element={<PageNotFound />} />
 
