@@ -4844,7 +4844,7 @@ li.li-pd-imgs.nav-active:before {
 .event-details-text .upcoming-event-time {
     position: relative;
     left: 0;
-    width: 30%;
+    width: 55%;
     transform: translateY(-30px);
 }
 .event-details-text h2{

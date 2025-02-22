@@ -7,28 +7,28 @@ const slidesData = [
     description: 'We build strength, stability, and self-reliance through shelter.',
     imageUrlDesktop: '/assets/img/hero-1.jpg',
     imageUrlMobile: '/assets/img/mob.jpg', // Mobile-specific image
-    link: '/donation',
+    link: '/',
   },
   {
     title: 'Help for Orphans',
     description: 'One of the biggest risk factors involved in family separation.',
     imageUrlDesktop: '/assets/img/hero-2.jpg',
     imageUrlMobile: '/assets/img/mob2.jpg', // Mobile-specific image
-    link: '/donation',
+    link: '/',
   },
   {
     title: 'Sponsor an Orphan',
     description: 'One of the biggest risk factors involved in family separation.',
     imageUrlDesktop: '/assets/img/hero-3.jpg',
     imageUrlMobile: '/assets/img/mob3.jpg', // Mobile-specific image
-    link: '/donation',
+    link: '/',
   },
   {
     title: 'Educational Needs',
     description: 'The woman approaches the camera till we see a close up of her face.',
     imageUrlDesktop: '/assets/img/dummy4.jpg',
     imageUrlMobile: '/assets/img/mob4.jpg', // Mobile-specific image
-    link: '/donation',
+    link: '/',
   },
 ];
 

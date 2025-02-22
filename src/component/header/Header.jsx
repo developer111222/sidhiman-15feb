@@ -180,7 +180,9 @@ const Header = () => {
                         <li>
                             <NavLink to="/gallery">Gallery</NavLink>
                           </li>
-
+                          <li>
+                            <NavLink to="/events">Events</NavLink>
+                          </li>
                         <li>
                             <NavLink to="/blog">Blog</NavLink>
                           </li>
@@ -241,7 +243,7 @@ const Header = () => {
                           </div>
                         </div>
                       </div> */}
-                      <NavLink className="theme-btn" to="/donation">
+                      <NavLink className="theme-btn" to="/">
                         Donate Now
                       </NavLink>
                     </div>
@@ -335,6 +337,9 @@ const Header = () => {
 
 <li>
                             <NavLink to="/gallery">Gallery</NavLink>
+                          </li>
+                          <li>
+                            <NavLink to="/events">Events</NavLink>
                           </li>
 
               <li>

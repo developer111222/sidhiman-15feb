@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllEvents } from '../../action/eventAction';
 import ImageUrl from '../../utils/ImageUrl';
+import { NavLink } from 'react-router-dom';
 
 const Events = () => {
     const dispatch = useDispatch();
@@ -67,7 +68,9 @@ const Events = () => {
                         {/* Location & Read More Section */}
                         <div style={styles.footer}>
                             <p style={styles.location}>📍 {event.location}</p>
-                            <a href={`/events/${event.slug}`} style={styles.readMore}>Read More →</a>
+                            <NavLink to={`/events/${event.slug}`} style={styles.readMore}>
+  Read More →
+</NavLink>
                         </div>
                     </div>
                 </div>
