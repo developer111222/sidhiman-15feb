@@ -55,6 +55,6 @@
     ]
   },
   "devDependencies": {
-    "react-refresh": "^0.16.0"
+    "react-refresh": "^0.10.0"
   }
 }
