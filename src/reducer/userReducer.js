@@ -1,6 +1,6 @@
 import {
     SIGNUP_REQUEST, SIGNUP_SUCCESS, SIGNUP_FAILURE, LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE, PROFILE_REQUEST, PROFILE_SUCCESS, PROFILE_FAIL, RESET_CLEAR
-} from '../constant/userConstanr';
+} from '../constant/userConstant';
 
 const initialstate = {
     user: [],
