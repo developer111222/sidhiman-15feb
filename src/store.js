@@ -1,7 +1,7 @@
 import { applyMiddleware, compose,combineReducers,createStore } from 'redux';
 import { thunk } from "redux-thunk";
 import thunkMiddleware from 'redux-thunk'
-import { composeWithDevTools } from "redux-devtools-extension";
+// import { composeWithDevTools } from "redux-devtools-extension";
 import { userReducer } from './reducer/userReducer';
 import { blogReducer } from './reducer/blogReducer';
 import { blogCategoryReducer } from './reducer/blogCategoryReducer';
