@@ -1,7 +1,7 @@
 
 import {
     CREATE_FORM_REQUEST,CREATE_FORM_SUCCESS,CREATE_FORM_FAILURE,GETFORM_REQUEST,GETFORM_SUCCESS,GETFORM_FAILURE,DELETE_FORM_FAIL,DELETE_FORM_REQUEST,DELETE_FORM_SUCCESS,
-    RESET_CLEAR
+    CONTACT_RESET_CLEAR
   } from '../constant/contactformConstant';
   
   import GetSiteUrl from '../utils/GetSiteUrl';
@@ -82,5 +82,5 @@ export const deleteForm = (id) => async (dispatch) => {
 
 //-------Reset clear---
 export const ResetClear = () => async (dispatch) => {
-  dispatch({ type: RESET_CLEAR });
+  dispatch({ type: CONTACT_RESET_CLEAR });
 };

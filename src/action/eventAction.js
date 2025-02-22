@@ -15,7 +15,7 @@ import {
   DELETE_EVENTS_REQUEST,
   DELETE_EVENTS_SUCCESS,
   DELETE_EVENTS_FAIL,
-  RESET_CLEAR
+  EVENT_RESET_CLEAR
 } from '../constant/eventConstant';
 
 import GetSiteUrl from '../utils/GetSiteUrl';
@@ -151,5 +151,5 @@ export const deleteEvent = (id) => async (dispatch) => {
 
 //-------Reset clear---
 export const ResetClear = () => async (dispatch) => {
-  dispatch({ type: RESET_CLEAR });
+  dispatch({ type: EVENT_RESET_CLEAR });
 };

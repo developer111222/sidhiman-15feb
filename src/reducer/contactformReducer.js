@@ -1,6 +1,6 @@
 import {
     CREATE_FORM_REQUEST,CREATE_FORM_SUCCESS,CREATE_FORM_FAILURE,GETFORM_REQUEST,GETFORM_SUCCESS,GETFORM_FAILURE,DELETE_FORM_FAIL,DELETE_FORM_REQUEST,DELETE_FORM_SUCCESS,
-    RESET_CLEAR
+    CONTACT_RESET_CLEAR
   } from '../constant/contactformConstant';
 const initialstate = {
     forms: [],
@@ -55,7 +55,7 @@ export const contactformReducer = (state = initialstate, action) => {
                 error: action.payload
             };
 
-        case RESET_CLEAR:
+        case CONTACT_RESET_CLEAR:
             return {
                 ...state,
               

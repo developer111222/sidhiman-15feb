@@ -13,7 +13,7 @@ import {
     UPDATE_EVENTS_FAIL,
     DELETE_EVENTS_REQUEST,
     DELETE_EVENTS_SUCCESS,
-    DELETE_EVENTS_FAIL,RESET_CLEAR
+    DELETE_EVENTS_FAIL,EVENT_RESET_CLEAR
   } from '../constant/eventConstant';
 
 const initialstate = {
@@ -90,7 +90,7 @@ export const eventReducer = (state = initialstate, action) => {
                 error: action.payload
             };
 
-        case RESET_CLEAR:
+        case EVENT_RESET_CLEAR:
             return {
                 ...state,
                 isAuthenticate: false,
