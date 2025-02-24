@@ -128,7 +128,7 @@ const handlelogout=()=>{
         </ListItem>
       </NavLink>
 
-      <NavLink
+      {/* <NavLink
         to="/admin/all-payment"
         style={{ textDecoration: "none", color: "inherit" }}
       >
@@ -136,7 +136,7 @@ const handlelogout=()=>{
           <FaCog style={{ marginRight: "10px" }} />
           <ListItemText primary="All Payment Info" />
         </ListItem>
-      </NavLink>
+      </NavLink> */}
 
       <NavLink
         to="/admin/contact-form"

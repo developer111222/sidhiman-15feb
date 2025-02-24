@@ -94,6 +94,7 @@ console.log(id,blog)
                         handleChange={handleChange}
                         formData={formData}
                         handleSubmit={handleSubmit}
+                        setFormData={setFormData}
                     />
                 )}
             </div>

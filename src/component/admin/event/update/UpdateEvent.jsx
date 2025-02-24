@@ -7,13 +7,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import EventForm from '../form/EventForm';
 
 const UpdateEvent = () => {
-
-    const navigate=useNavigate()
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { id } = useParams();
-    const { loading, error, event,isevent, isupdate, message } = useSelector((state) => state.events);
+    const { loading, error, event, isevent, isupdate, message } = useSelector((state) => state.events);
 
-    
     useEffect(() => {
         if (error) {
             toast.error(error);
@@ -24,15 +22,12 @@ const UpdateEvent = () => {
             dispatch(ResetClear());
             navigate('/admin/all-events');
         }
-        if(!isevent){
-            
+        if (!isevent) {
             dispatch(getSingleEvent(id));
         }
-        
-    }, [dispatch, error,isevent, isupdate, id]);
-    
-   
-    // Set initial form data only after the blog is fetched
+    }, [dispatch, error, isevent, isupdate, id]);
+
+    // Set initial form data only after the event is fetched
     const [formData, setFormData] = useState({
         title: '',
         content: '',
@@ -42,59 +37,50 @@ const UpdateEvent = () => {
         endDate: '',
         openingTime: '',
         closeTime: ''
-      });
+    });
 
-
-    // Update form data when blog data is available
+    // Update form data when event data is available
     useEffect(() => {
-        // Check if event is an array and has at least one element
-        if (Array.isArray(event) && event.length > 0) {
-            const eventData = event[0];  // Extract the first item from the array
-            
+        // Check if event is an object and has data
+        if (event && Object.keys(event).length > 0) {
             setFormData({
-                title: eventData.title || '',
-                content: eventData.content || '',
-                image: eventData.image || '',
-                location: eventData.location || '',
-                startDate: eventData.startDate || '',
-                endDate: eventData.endDate || '',
-                openingTime: eventData.openingTime || '',
-                closeTime: eventData.closeTime || ''
+                title: event.title || '',
+                content: event.content || '',
+                image: event.image || '',
+                location: event.location || '',
+                startDate: event.startDate || '',
+                endDate: event.endDate || '',
+                openingTime: event.openingTime || '',
+                closeTime: event.closeTime || ''
             });
         }
-    }, [event]);  // Effect will run whenever `event` changes
-    
-    
-    
-    
-    
+    }, [event]); // Effect will run whenever `event` changes
 
     // Handle input change for text fields and image
     const handleChange = (e) => {
         const { name, value, files } = e.target;
         setFormData((prev) => ({
-          ...prev,
-          [name]: name === 'image' ? files[0] : value,
+            ...prev,
+            [name]: name === 'image' ? files[0] : value,
         }));
-      };
-    
-      // Handle form submission
-      const handleSubmit = (e) => {
+    };
+
+    // Handle form submission
+    const handleSubmit = (e) => {
         e.preventDefault();
-        // Log the form data to the console or send it to an API
         console.log('Form Data Submitted:', formData);
-        dispatch(updateEvent(id,formData))
+        dispatch(updateEvent(id, formData));
         setFormData({
-          title: '',
-          content: '',
-          image: '',
-          location: '',
-          startDate: '',
-          endDate: '',
-          openingTime: '',
-          closeTime: ''
+            title: '',
+            content: '',
+            image: '',
+            location: '',
+            startDate: '',
+            endDate: '',
+            openingTime: '',
+            closeTime: ''
         });
-      };
+    };
 
     return (
         <section style={{ display: 'flex', width: '100%' }}>
@@ -103,17 +89,17 @@ const UpdateEvent = () => {
 
             {/* Main content on the right */}
             <div style={{ marginLeft: 40, padding: '20px', width: '100%' }}>
-                <h2>Update Events</h2>
+                <h2>Update Event</h2>
 
                 {loading ? (
                     <p>Loading...</p>
                 ) : (
                     <EventForm
-        handleChange={handleChange}
-        formData={formData}
-        handleSubmit={handleSubmit}
-        setFormData={setFormData}
-      />
+                        handleChange={handleChange}
+                        formData={formData}
+                        handleSubmit={handleSubmit}
+                        setFormData={setFormData}
+                    />
                 )}
             </div>
         </section>
