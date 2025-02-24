@@ -2,8 +2,8 @@ import React from 'react'
 
 const ImageUrl = () => {
     const url =
-  'http://localhost:5000/upload'
-    // 'https://jellyfish-app-irlgj.ondigitalocean.app/upload'
+  // 'http://localhost:5000/upload'
+    'https://goldfish-app-hbefc.ondigitalocean.app//upload'
   return url
 }
 
