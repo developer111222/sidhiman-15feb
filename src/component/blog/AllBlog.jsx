@@ -12,7 +12,7 @@ const AllBlog = () => {
     const { loading, blogs, error } = useSelector((state) => state.allblogs);
 
     const [currentPage, setCurrentPage] = useState(1);
-    const blogsPerPage = 9;
+    const blogsPerPage = 6;
 
     const imageurl = ImageUrl();
 
@@ -58,7 +58,7 @@ const AllBlog = () => {
                                     <h3>Loading...</h3>
                                 ) : currentBlogs?.length > 0 ? (
                                     currentBlogs.map((blog) => (
-                                        <div key={blog._id} className="col-md-4">
+                                        <div key={blog._id} className="col-md-6">
                                             <div className="card" style={{ borderRadius: "30px" }}>
                                                 <img
                                                     src={`${imageurl}/${blog.image}`}
@@ -67,17 +67,18 @@ const AllBlog = () => {
                                                     style={{ height: "200px", objectFit: "cover" }}
                                                 />
                                                 <div className="card-body">
-                                                    {/* Blog Category Section */}
                                                     <div className="d-flex justify-content-between align-items-center mb-2">
                                                         <p className="mb-0 text-muted small">Blog Category</p>
                                                         <p className="mb-0 text-muted small fw-bold">{blog.category.category}</p>
                                                     </div>
 
-                                                    {/* Blog Title & Description */}
                                                     <h5 className="card-title">{blog.title}</h5>
-                                                    <p className="card-text">{blog.metadescription}</p>
 
-                                                    {/* Date & Read More Section */}
+                                                    {/* Text with max 2 lines and ellipsis if too long */}
+                                                    <p className="card-text">
+                                                        {blog.metadescription}
+                                                    </p>
+
                                                     <div className="d-flex justify-content-between align-items-center mt-3">
                                                         <p className="mb-0 text-muted small">
                                                             📅 {new Date(blog.createdAt).toLocaleDateString()}
@@ -92,7 +93,6 @@ const AllBlog = () => {
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     ))
                                 ) : (
@@ -100,7 +100,6 @@ const AllBlog = () => {
                                 )}
                             </div>
 
-                            {/* Pagination */}
                             {blogs.length > blogsPerPage && (
                                 <nav>
                                     <ul className="pagination justify-content-center mt-4">
@@ -116,7 +115,6 @@ const AllBlog = () => {
                             )}
                         </div>
 
-                        {/* Sidebar */}
                         <div className="col-xl-4">
                             <div className="sidebar">
                                 <RecentPosts />

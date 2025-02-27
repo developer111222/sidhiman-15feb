@@ -27,7 +27,7 @@ const BlogByCategory = () => {
 
   // Ensure blogs is an array
   const blogs = Array.isArray(categoryblogs) ? categoryblogs : [];
-  
+
   // Debugging: Log the blogs data to check its structure
   console.log("Blogs data:", categoryblogs);
 
@@ -39,7 +39,7 @@ const BlogByCategory = () => {
 
   return (
     <>
-    <section
+      <section
         className="page-title-area"
         style={{ backgroundImage: "url(https://via.placeholder.com/1920x430)" }}
       >
@@ -49,10 +49,10 @@ const BlogByCategory = () => {
             <p>Organisations committed to ending poverty worldwide.</p>
           </div>
           <ol className="breadcrumb">
-                        <li className="breadcrumb-item"><a href="/">Home</a></li>
-                        <li className="breadcrumb-item active" aria-current="page">Our Blog</li>
-                        <li className="breadcrumb-item active" aria-current="page">Blog Details</li>
-                    </ol>
+            <li className="breadcrumb-item"><a href="/">Home</a></li>
+            <li className="breadcrumb-item active" aria-current="page">Our Blog</li>
+            <li className="breadcrumb-item active" aria-current="page">Blog Details</li>
+          </ol>
         </div>
       </section>
 
@@ -65,13 +65,13 @@ const BlogByCategory = () => {
                   <h3>Loading...</h3>
                 ) : currentBlogs.length > 0 ? (
                   currentBlogs.map((blog) => (
-                    <div key={blog._id} className="col-md-4">
+                    <div key={blog._id} className="col-md-6">
                       <div className="card" style={{ borderRadius: "30px" }}>
                         <img
                           src={`${imageurl}/${blog.image}`}
                           className="card-img-top"
                           alt={blog.title}
-                          style={{ height: "200px", objectFit: "cover" }}
+                          style={{ height: "200px", objectFit: "cover", }}
                         />
                         <div className="card-body">
                           {/* Blog Category Section */}
@@ -81,9 +81,13 @@ const BlogByCategory = () => {
                               {blog.category?.category || "Uncategorized"}
                             </p>
                           </div>
+
                           {/* Blog Title & Description */}
                           <h5 className="card-title">{blog.title}</h5>
+
+                          {/* Text with max 2 lines and ellipsis if too long */}
                           <p className="card-text">{blog.metadescription}</p>
+
                           {/* Date & Read More Section */}
                           <div className="d-flex justify-content-between align-items-center mt-3">
                             <p className="mb-0 text-muted small">
